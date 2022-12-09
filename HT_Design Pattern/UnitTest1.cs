@@ -32,16 +32,25 @@ namespace HT_Design_Pattern
         [TestMethod]
         public void TestMethod1()
         {
-            log.Info("sample");
+            log.Info("Gmail Test");
             var loginPage = new LoginPage();
             loginPage.Open();
-            loginPage.Login("username", "password");
+            loginPage.Login("shahadnaz807@gmail.com", "Epaam12345");
+            Assert.AreEqual(loginPage.UsernameField.GetAttribute("value"), "shahadnaz807@gmail.com");
+            Assert.AreEqual(loginPage.PasswordField.GetAttribute("value"), "Epaam12345");
+            Assert.True(loginPage.MainPage.Displayed, "The login is successful");   //Assert for login is successful
             var InboxPage = new InboxPage();
-            InboxPage.Compose("sender_mail", "subject", "main objective");
+            InboxPage.Compose("shas8571@gmail.com", "Sample Subject", "Shahad Mail");
             var DraftPage = new DraftPage();
             DraftPage.DraftMails();
+            //Assert.AreEqual(true, DraftPage.DraftMail.Displayed); // Verify, that the mail presents in ‘Drafts’ folder.
+            // Verify the draft content(addressee, subject and body – should be the same as in 3).
+            //Assert.AreEqual(checkSenderMail.Text, "shas8571@gmail.com");
+            //Assert.AreEqual(DraftPage.checkSubject.GetAttribute("value"), "Sample Subject");
+            //Assert.AreEqual(DraftPage.checkTextbox.Text, "Shahad Mail");
             var SentPage = new SentPage();
-            SentPage.SendMails();
+            SentPage.SendMails("Updated");
+            SentPage.DeleteMail();
             SentPage.LogOut();
 
         }
