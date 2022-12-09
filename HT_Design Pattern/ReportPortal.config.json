@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/reportportal/agent-net-nunit/master/src/ReportPortal.NUnitExtension/ReportPortal.config.schema",
+  "enabled": true,
+  "server": {
+    "url": "https://demo.reportportal.io/api/v1",
+    "project": "shahadnazeer_personal",
+    "authentication": {
+      "uuid": "7062db69-d0cc-4d5d-9bb5-a2cf3c54427f"
+    }
+  },
+  "launch": {
+    "name": "HT_Test Automation",
+    "description": "this is description",
+    "debugMode": false,
+    "attributes": [ "t1", "t2", "platform:x64" ]
+  }
+}
