@@ -57,10 +57,10 @@ namespace HT_Design_Pattern.PageObjects
             ac.SendKeys(Keys.ArrowDown).SendKeys(Keys.Enter).Build().Perform();
             newTextbox.SendKeys(newMessage);
             ac.MoveToElement(newSendField).Click().Build().Perform();
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(updatedSentMail));
-            var updatedSentButton = new Button(updatedSentMail);
-            updatedSentButton.Click();
-            Driver.GetInstance().Navigate().Back();
+            //wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(updatedSentMail));
+            //var updatedSentButton = new Button(updatedSentMail);
+            //updatedSentButton.Click();
+            //Driver.GetInstance().Navigate().Back();
         }
 
         public void DeleteMail()

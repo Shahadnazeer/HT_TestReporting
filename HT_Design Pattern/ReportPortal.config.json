@@ -9,9 +9,9 @@
     }
   },
   "launch": {
-    "name": "HT_Test Automation",
-    "description": "this is description",
+    "name": "TEST REPORTING",
+    "description": "Use of log functionality",
     "debugMode": false,
-    "attributes": [ "t1", "t2", "platform:x64" ]
+    "attributes": [ "t0", "t3", "platform:x64" ]
   }
 }

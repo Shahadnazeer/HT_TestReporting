@@ -22,12 +22,10 @@ namespace HT_Design_Pattern
     {
         private static IWebDriver? _driver;
 
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static IWebDriver GetInstance()
         {
             if (_driver == null)
             {
-                //log.Info("s");
                 var chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--start-maximized");
                 _driver = new ChromeDriver(chromeOptions);

@@ -32,26 +32,34 @@ namespace HT_Design_Pattern
         [TestMethod]
         public void TestMethod1()
         {
-            log.Info("Gmail Test");
-            var loginPage = new LoginPage();
-            loginPage.Open();
-            loginPage.Login("shahadnaz807@gmail.com", "Epaam12345");
-            Assert.AreEqual(loginPage.UsernameField.GetAttribute("value"), "shahadnaz807@gmail.com");
-            Assert.AreEqual(loginPage.PasswordField.GetAttribute("value"), "Epaam12345");
-            Assert.True(loginPage.MainPage.Displayed, "The login is successful");   //Assert for login is successful
-            var InboxPage = new InboxPage();
-            InboxPage.Compose("shas8571@gmail.com", "Sample Subject", "Shahad Mail");
-            var DraftPage = new DraftPage();
-            DraftPage.DraftMails();
-            //Assert.AreEqual(true, DraftPage.DraftMail.Displayed); // Verify, that the mail presents in ‘Drafts’ folder.
-            // Verify the draft content(addressee, subject and body – should be the same as in 3).
-            //Assert.AreEqual(checkSenderMail.Text, "shas8571@gmail.com");
-            //Assert.AreEqual(DraftPage.checkSubject.GetAttribute("value"), "Sample Subject");
-            //Assert.AreEqual(DraftPage.checkTextbox.Text, "Shahad Mail");
-            var SentPage = new SentPage();
-            SentPage.SendMails("Updated");
-            SentPage.DeleteMail();
-            SentPage.LogOut();
+            log.Debug("Trying to send a mail");
+            try
+            {
+                var loginPage = new LoginPage();
+                loginPage.Open();
+                loginPage.Login("shahadnaz807@gmail.com", "Epaam12345");
+                Assert.AreEqual(loginPage.UsernameField.GetAttribute("value"), "shahadnaz807@gmail.com");
+                Assert.AreEqual(loginPage.PasswordField.GetAttribute("value"), "Epaam12345");
+                Assert.True(loginPage.MainPage.Displayed, "The login is successful");   //Assert for login is successful
+                var InboxPage = new InboxPage();
+                InboxPage.Compose("shas8571@gmail.com", "Sample Subject", "Shahad Mail");
+                var DraftPage = new DraftPage();
+                DraftPage.DraftMails();
+                //Assert.AreEqual(true, DraftPage.DraftMail.Displayed); // Verify, that the mail presents in ‘Drafts’ folder.
+                // Verify the draft content(addressee, subject and body – should be the same as in 3).
+                //Assert.AreEqual(checkSenderMail.Text, "shas8571@gmail.com");
+                //Assert.AreEqual(DraftPage.checkSubject.GetAttribute("value"), "Sample Subject");
+                //Assert.AreEqual(DraftPage.checkTextbox.Text, "Shahad Mail");
+                var SentPage = new SentPage();
+                SentPage.SendMails("Updated");
+                SentPage.DeleteMail();
+                //SentPage.LogOut();
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error occured", ex);
+            }
+            log.Debug("Mail sent");
 
         }
 
